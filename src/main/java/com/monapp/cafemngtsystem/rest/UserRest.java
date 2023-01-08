@@ -1,4 +1,4 @@
-package com.spring.bankaccount.rest;
+package com.monapp.cafemngtsystem.rest;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
