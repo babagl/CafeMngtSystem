@@ -1,6 +1,6 @@
 package com.monapp.cafemngtsystem.POJO;
 
-import jakarta.persistence.*;
+import javax.persistence.*;
 import lombok.Data;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -22,7 +22,6 @@ public class User implements Serializable {
     private String name;
 
     private String contactNumber;
-
     private String email;
 
     private String password;
