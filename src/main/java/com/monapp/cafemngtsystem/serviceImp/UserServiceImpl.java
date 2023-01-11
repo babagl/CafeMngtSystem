@@ -63,6 +63,9 @@ public class UserServiceImpl implements UserService {
                     return new ResponseEntity<String>("{\"token\":\""+
                             jwtUtils.generatedToken(costumerUserDetailsService.getUserDetail().getEmail(),
                                     costumerUserDetailsService.getUserDetail().getRoles()) +"\"}" ,HttpStatus.OK);
+                }else {
+                    return new ResponseEntity<String>("{\"message\":"+"wait the admin approuval"+"\"}",
+                            HttpStatus.BAD_REQUEST);
                 }
             }
         }catch (Exception ex){
