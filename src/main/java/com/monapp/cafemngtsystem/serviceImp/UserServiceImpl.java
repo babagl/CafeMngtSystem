@@ -71,7 +71,8 @@ public class UserServiceImpl implements UserService {
         }catch (Exception ex){
             log.error("{}",ex);
         }
-        return null;
+        return new ResponseEntity<String>("{\"message\":"+"Bad Credentiel"+"\"}",
+                HttpStatus.BAD_REQUEST);
     }
 
     private boolean validateSignUpMap(Map<String, String> requestMap){
