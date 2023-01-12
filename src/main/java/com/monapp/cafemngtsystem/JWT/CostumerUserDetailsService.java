@@ -21,7 +21,7 @@ public class CostumerUserDetailsService implements UserDetailsService {
     private com.monapp.cafemngtsystem.POJO.User userDetail;
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        log.info("inside loadUserByUsername{}", email);
+        log.info("inside loadUserByUsername {}", email);
         userDetail =userDao.findByEmailId(email);
         if (!Objects.isNull(userDetail)){
             return new User(userDetail.getEmail(), userDetail.getPassword(),new ArrayList<>());
