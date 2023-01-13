@@ -20,5 +20,5 @@ public interface UserRest {
     public ResponseEntity<String> login(@RequestBody(required = true) Map<String,String> requestMap);
 
     @GetMapping(path = "/get")
-    public ResponseEntity<List<UserWrapper>> getUser();
+    public ResponseEntity<List<UserWrapper>> getAllUser();
 }

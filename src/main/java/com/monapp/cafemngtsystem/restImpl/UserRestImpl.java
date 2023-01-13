@@ -11,6 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -41,7 +42,12 @@ public class UserRestImpl implements UserRest{
     }
 
     @Override
-    public ResponseEntity<List<UserWrapper>> getUser() {
-        return null;
+    public ResponseEntity<List<UserWrapper>> getAllUser() {
+        try {
+            return userService.getAllUser();
+        }catch (Exception ex){
+            ex.printStackTrace();
+        }
+        return new ResponseEntity<List<UserWrapper>>(new ArrayList<>(),HttpStatus.INTERNAL_SERVER_ERROR);
     }
 }
