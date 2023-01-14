@@ -99,9 +99,10 @@ public class UserServiceImpl implements UserService {
             if (jwtFilter.isAdmin()){
                 Optional<User> optionalUser = userDao.findById(Integer.parseInt(requestMap.get("id")));
                 if (!optionalUser.isEmpty()){
-                    userDao.updateStatus();
+                    userDao.updateStatus(requestMap.get("status"),Integer.parseInt(requestMap.get("id")));
+                    return CafeUtils.getResponseEntity("UserStatus updated Successfully",HttpStatus.OK);
                 }else {
-                    CafeUtils.getResponseEntity("User id doesn't not exist",HttpStatus.OK);
+                    return CafeUtils.getResponseEntity("User id doesn't not exist",HttpStatus.OK);
                 }
             }else {
              return CafeUtils.getResponseEntity(CafeConstants.UNAUTHORIZED_ACCESS,HttpStatus.UNAUTHORIZED);
