@@ -100,6 +100,7 @@ public class UserServiceImpl implements UserService {
                 Optional<User> optionalUser = userDao.findById(Integer.parseInt(requestMap.get("id")));
                 if (!optionalUser.isEmpty()){
                     userDao.updateStatus(requestMap.get("status"),Integer.parseInt(requestMap.get("id")));
+                    sendMailToAllAdmin(requestMap.get("status"), optionalUser.get().getEmail(), userDao.getAllAdmin());
                     return CafeUtils.getResponseEntity("UserStatus updated Successfully",HttpStatus.OK);
                 }else {
                     return CafeUtils.getResponseEntity("User id doesn't not exist",HttpStatus.OK);
@@ -111,6 +112,9 @@ public class UserServiceImpl implements UserService {
             ex.printStackTrace();
         }
         return CafeUtils.getResponseEntity(CafeConstants.SOMETHING_WENT_WRONG,HttpStatus.INTERNAL_SERVER_ERROR);
+    }
+
+    private void sendMailToAllAdmin(String status, String email, List<String> allAdmin) {
     }
 
     private boolean validateSignUpMap(Map<String, String> requestMap){
